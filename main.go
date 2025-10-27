@@ -1,6 +1,7 @@
 package main
 
 import (
+	"os"
     "payment_wrapper/routes"
 	"payment_wrapper/config"
     "github.com/gin-gonic/gin"
@@ -30,7 +31,11 @@ func main() {
     // Routes
     routes.PaymentRoutes(r)
 
-    // Run server
-    r.Run(":8080") // localhost:8080
+    port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080" // fallback for local testing
+	}
+	r.Run(":" + port)
 }
+
 
