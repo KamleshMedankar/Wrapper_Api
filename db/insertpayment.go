@@ -9,7 +9,7 @@ import (
 
 func InsertPayment(p *models.Payment) error {
 	query := `
-		INSERT INTO payments
+		INSERT INTO payment
 		(order_id, razorpay_order_id, amount, currency, customer_name, customer_email, gateway, status, created_at)
 		VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW())
 	`
