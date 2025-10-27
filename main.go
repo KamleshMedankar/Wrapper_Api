@@ -31,5 +31,6 @@ func main() {
     routes.PaymentRoutes(r)
 
     // Run server
-    r.Run(":8099") // localhost:8080
+    r.Run(":8080") // localhost:8080
 }
+
