@@ -21,7 +21,7 @@ func InsertPayment(p *models.Payment) error {
 // UpdatePaymentStatus updates payment status after verification
 func UpdatePaymentStatus(orderID, status, paymentID, signature string) error {
 	query := `
-		UPDATE payments
+		UPDATE payment
 		SET status = ?, razorpay_payment_id = ?, razorpay_signature = ?, updated_at = NOW()
 		WHERE razorpay_order_id = ?
 	`
