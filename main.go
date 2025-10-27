@@ -32,13 +32,15 @@ func main() {
     // Routes
     routes.PaymentRoutes(r)
 
-    port := os.Getenv("PORT")
-	if port == "" {
-		port = "8080" // fallback for local testing
-	}
-	fmt.Println(" Server running on port:", port)
-	r.Run(":" + port)
+  port := os.Getenv("PORT")
+if port == "" {
+    port = "8099" // Railway expects this port
 }
+fmt.Println("🚀 Server running on port:", port)
+r.Run(":" + port)
+
+}
+
 
 
 
