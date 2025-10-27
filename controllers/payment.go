@@ -33,7 +33,9 @@ func CreatePayment(c *gin.Context) {
 	// 3️⃣ Insert payment into DB immediately
 	if err := db.InsertPayment(&req); err != nil {
 		fmt.Println("DB Insert Error:", err)
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "failed to insert payment in db"})
+		c.JSON(http.StatusInternalServerError, gin.H{
+        "error": fmt.Sprintf("DB insert failed: %v", err),
+    })
 		return
 	}
 
