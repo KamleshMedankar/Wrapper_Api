@@ -10,6 +10,7 @@ import (
     "io/ioutil"
     "encoding/json"
     "payment_wrapper/config"
+	"log"
 )
 
 func CreateRazorpayPayment(amount int64, currency, orderID, email, name string) (string, error) {
