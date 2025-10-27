@@ -6,6 +6,7 @@ import (
 	"payment_wrapper/config"
     "github.com/gin-gonic/gin"
 	"payment_wrapper/db"
+	"fmt"
 )
 
 func main() {
@@ -35,7 +36,9 @@ func main() {
 	if port == "" {
 		port = "8080" // fallback for local testing
 	}
+	fmt.Println(" Server running on port:", port)
 	r.Run(":" + port)
 }
+
 
 
