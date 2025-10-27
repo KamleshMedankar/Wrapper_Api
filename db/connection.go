@@ -13,8 +13,16 @@ var Conn *sql.DB
 
 func Connect() {
 	var err error
+	databaseURL := os.Getenv("DATABASE_URL")
+	if databaseURL == "" {
+		log.Fatal("DATABASE_URL not found")
+	}
 
-	dsn := "root:root@tcp(127.0.0.1:3306)/job_scraper"
+dsn := strings.Replace(databaseURL, "mysql://", "", 1)
+	// Now looks like: user:password@host:port/dbname
+
+	dsn = fmt.Sprintf("%s?parseTime=true", dsn)
+	
 	Conn, err = sql.Open("mysql", dsn)
 	if err != nil {
 		log.Fatal("Failed to open DB:", err)
