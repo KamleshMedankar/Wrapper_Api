@@ -43,9 +43,13 @@ func CreateRazorpayPayment(amount int64, currency, orderID, email, name string) 
 	json.Unmarshal(respBody, &result)
 
 	if id, ok := result["id"].(string); ok {
-		return "https://checkout.razorpay.com/v1/checkout/embedded?order_id=" + id, nil
-	}
-	return "", fmt.Errorf("failed to create payment")
+    return "https://checkout.razorpay.com/v1/checkout/embedded?order_id=" + id, nil
+}
+
+// Log Razorpay error response
+log.Printf("Razorpay response: %s\n", string(respBody))
+return "", fmt.Errorf("failed to create payment: %s", string(respBody))
+
 }
 
 
